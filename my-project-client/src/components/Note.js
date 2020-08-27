@@ -18,12 +18,13 @@ export default class Note extends React.Component {
 
 
     render() {
+
         return (
             <Card className="block-example border border-primary rounded mb-0" >
-                <Card.Header as="h5">{note.title} - </Card.Header>
+                <Card.Header as="h5">{this.props.note.title} - </Card.Header>
                 <Card.Body>
                     <Card.Text>
-                    {note.content}
+                    {this.props.note.content}
                     </Card.Text>
                 </Card.Body>
             </Card>
