@@ -32,7 +32,7 @@ export default class Login extends React.Component {
             }
           )
         }
-        fetch('http://localhost:3001/users', postObj)
+        fetch('http://localhost:3000/users', postObj)
         .then(resp => resp.json())
         .then(userData => {this.props.updateUser(userData)
             this.props.history.push("/dashboard")

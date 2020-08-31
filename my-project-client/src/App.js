@@ -62,6 +62,7 @@ handleNewNote = (event, title, content) => {
     fetch('http://localhost:3000/notes', postObj)
     .then(resp => resp.json())
     .then(noteData => {
+      console.log(noteData)
       let newNotes = this.state.notes
       newNotes.push(noteData)
       this.setState({
