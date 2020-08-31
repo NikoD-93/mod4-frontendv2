@@ -14,11 +14,11 @@ export default class Note extends React.Component {
             note: {}
         }
     }
-
+    
 
 
     render() {
-
+        console.log(this.props)
         return (
             <Card className="block-example border border-primary rounded mb-0" >
                 <Card.Header as="h5">{this.props.note.title} - </Card.Header>

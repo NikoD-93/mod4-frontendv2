@@ -12,16 +12,16 @@ import Note from './Note'
 
 export default class Dashboard extends React.Component {
 
-showNote = (currentNote) => {
-  let clickedNote = this.props.notes.filter(note => {
-     return currentNote.title = note.title
-  })
-  return <Note note={clickedNote}></Note>
+showNote = (clickedNote) => {
+  console.log(clickedNote.target.id)
+  // return <Note note={clickedNote}></Note>
 }
+
+
 renderUserNotes = () => {
     if (this.props.notes) {
     return this.props.notes.map(note => {
-        return <Card onClick={this.showNote(note)} id={note.id} className="block-example border border-primary rounded mb-0" >
+        return <Card onClick={(event) => {this.showNote(event)}} id={note.id} className="block-example border border-primary rounded mb-0" >
         <Card.Header as="h5">{note.title} - </Card.Header>
         <Card.Body>
           <Card.Text>
@@ -46,6 +46,7 @@ handleLogout = () => {
   
 
 render() {
+  console.log(this.props.notes)
     return (
     <div>
         <Navbar bg="light" variant="light" width="100">
@@ -61,7 +62,6 @@ render() {
         <Row>
         <Col md={4}> {this.renderUserNotes()}  </Col>
         <Col md={8} className="block-example border border-dark">
-
         </Col>
         </Row>
     </Container>
