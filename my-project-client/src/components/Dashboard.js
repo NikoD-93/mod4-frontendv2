@@ -13,22 +13,24 @@ import Note from './Note'
 export default class Dashboard extends React.Component {
 
 showNote = (clickedNote) => {
-  console.log(clickedNote.target.id)
-  // return <Note note={clickedNote}></Note>
+  console.log(clickedNote)
+  return <Note note={clickedNote}></Note>
 }
 
 
 renderUserNotes = () => {
     if (this.props.notes) {
     return this.props.notes.map(note => {
-        return <Card onClick={(event) => {this.showNote(event)}} id={note.id} className="block-example border border-primary rounded mb-0" >
-        <Card.Header as="h5">{note.title} - </Card.Header>
-        <Card.Body>
-          <Card.Text>
-            {note.content.substr(0, 30)}...
-          </Card.Text>
-        </Card.Body>
-      </Card>
+        return <div id={note.id} >
+          <Card onClick={() => {this.showNote(note)}} className="block-example border border-primary rounded mb-0" >
+            <Card.Header as="h5">{note.title} - </Card.Header>
+            <Card.Body>
+              <Card.Text>
+                {note.content.substr(0, 30)}...
+              </Card.Text>
+            </Card.Body>
+          </Card>
+      </div>
     })
 } else {
     return 
