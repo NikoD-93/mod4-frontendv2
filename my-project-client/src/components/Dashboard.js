@@ -11,10 +11,30 @@ import Note from './Note'
 
 
 export default class Dashboard extends React.Component {
+  constructor() {
+    super() 
+      this.state = {
+        display: false 
+      }
+    
+  }
 
 showNote = (clickedNote) => {
   console.log(clickedNote)
-  return <Note note={clickedNote}></Note>
+  this.renderNoteComp()
+  return <Note note={this.clickedNote}></Note>
+}
+
+renderNoteComp = () => {
+  if (!this.state.display) {
+  this.setState({
+      display: true
+  })
+} else {
+  this.setState({
+      display: false
+  })
+}
 }
 
 
@@ -63,8 +83,14 @@ render() {
     <Container className="notes">
         <Row>
         <Col md={4}> {this.renderUserNotes()}  </Col>
-        <Col md={8} className="block-example border border-dark">
+        {this.state.display ?
+        <Col md={8} className="border border-dark">
+          <Note></Note>
+        </Col> 
+        :
+        <Col md={8}>
         </Col>
+        }
         </Row>
     </Container>
   </div>

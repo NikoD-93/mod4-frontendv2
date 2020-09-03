@@ -8,12 +8,6 @@ import Row from 'react-bootstrap/Row'
 
 
 export default class Note extends React.Component {
-    constructor() {
-        super()
-        this.state = {
-            note: {}
-        }
-    }
     
 
 
@@ -21,10 +15,10 @@ export default class Note extends React.Component {
         console.log(this.props)
         return (
             <Card className="block-example border border-primary rounded mb-0" >
-                <Card.Header as="h5">{this.props.note.title} - </Card.Header>
+                <Card.Header as="h5"> - </Card.Header>
                 <Card.Body>
                     <Card.Text>
-                    {this.props.note.content}
+                    {/* {this.props.note.content} */}
                     </Card.Text>
                 </Card.Body>
             </Card>
