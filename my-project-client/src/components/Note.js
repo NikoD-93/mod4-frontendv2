@@ -12,13 +12,13 @@ export default class Note extends React.Component {
 
 
     render() {
-        console.log(this.props)
+        console.log(this.props.note)
         return (
-            <Card className="block-example border border-primary rounded mb-0" >
-                <Card.Header as="h5"> - </Card.Header>
+            <Card md={"auto"} className="block-example border border-primary rounded w-100" >
+                <Card.Header as="h5">{this.props.note.title}</Card.Header>
                 <Card.Body>
                     <Card.Text>
-                    {/* {this.props.note.content} */}
+                    {this.props.note.content}
                     </Card.Text>
                 </Card.Body>
             </Card>
