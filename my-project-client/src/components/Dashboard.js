@@ -14,7 +14,8 @@ export default class Dashboard extends React.Component {
   constructor() {
     super() 
       this.state = {
-        display: false 
+        display: false,
+        currentNote: null 
       }
     
   }
@@ -22,7 +23,10 @@ export default class Dashboard extends React.Component {
 showNote = (clickedNote) => {
   console.log(clickedNote)
   this.renderNoteComp()
-  return <Note note={this.clickedNote}></Note>
+  return this.setState({
+    ...this.state,
+    currentNote: clickedNote
+  })
 }
 
 renderNoteComp = () => {
@@ -83,9 +87,11 @@ render() {
     <Container className="notes">
         <Row>
         <Col md={4}> {this.renderUserNotes()}  </Col>
-        {this.state.display ?
-        <Col md={8} className="border border-dark">
-          <Note></Note>
+        {this.state.currentNote ?
+        <Col  className="border border-dark">
+          <Container md={8} className="w-100">
+              <Note note={this.state.currentNote}></Note>
+          </Container>
         </Col> 
         :
         <Col md={8}>
