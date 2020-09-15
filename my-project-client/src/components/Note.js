@@ -7,19 +7,23 @@ import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row'
 
 
-export default class Note extends React.Component {
-    
 
+export default class Note extends React.Component {
 
     render() {
         console.log(this.props.note)
         return (
-            <Card md={"auto"} className="block-example border border-primary rounded w-100" >
+            <Card style={{width: 100, borderWidth:2, padding: 0}}md={"auto"} className="block-example border border-primary rounded w-100" >
                 <Card.Header as="h5">{this.props.note.title}</Card.Header>
                 <Card.Body>
                     <Card.Text>
                     {this.props.note.content}
                     </Card.Text>
+                    <Button 
+                        variant="primary"
+                        type="button">
+                        Edit
+                    </Button>
                 </Card.Body>
             </Card>
         )
