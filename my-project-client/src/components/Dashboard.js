@@ -25,7 +25,10 @@ export default class Dashboard extends React.Component {
   }
 
 showNote = (clickedNote) => {
-  console.log(clickedNote)
+  const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' };
+  let noteDate = new Date(clickedNote.created_at).toLocaleDateString('en-us', options)
+  console.log(noteDate)
+  clickedNote.date = noteDate
   this.renderNoteComp()
   return this.setState({
     ...this.state,
