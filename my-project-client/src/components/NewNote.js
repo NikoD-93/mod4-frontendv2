@@ -9,6 +9,8 @@ import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row'
 
 
+
+
 export default class NewNote extends React.Component {
     constructor(){
         super()
@@ -17,7 +19,7 @@ export default class NewNote extends React.Component {
                 content: ""
             }
     }
-
+    
     handleChange = (e) => {
         if (e.target.tagName === "INPUT"){
             this.setState({

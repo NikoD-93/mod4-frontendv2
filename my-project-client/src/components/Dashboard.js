@@ -9,6 +9,10 @@ import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row'
 import Note from './Note'
 
+const divBorders = {
+  borderWidth: 2
+}
+
 
 export default class Dashboard extends React.Component {
   constructor() {
@@ -88,8 +92,8 @@ render() {
         <Row>
         <Col md={4}> {this.renderUserNotes()}  </Col>
         {this.state.currentNote ?
-        <Col  className="border border-dark">
-          <Container md={8} className="w-100">
+        <Col  style={{padding: 0}}>
+          <Container style={{padding: 0}} md={8} className="w-100">
               <Note note={this.state.currentNote}></Note>
           </Container>
         </Col> 
