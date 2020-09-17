@@ -8,10 +8,11 @@ import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row'
 import Note from './Note'
+import EditForm from './EditForm'
 
-const divBorders = {
-  borderWidth: 2
-}
+// const divBorders = {
+//   borderWidth: 2
+// }
 
 
 export default class Dashboard extends React.Component {
@@ -91,7 +92,7 @@ render() {
         <Button variant="outline-primary" onClick={this.handleLogout}>Logout</Button>
         </Form>
         </Navbar>
-    <Container className="notes">
+    <Container className="notes" style={{paddingTop: "15px"}}>
         <Row>
         <Col md={4}> {this.renderUserNotes()}  </Col>
         {this.state.currentNote ?
