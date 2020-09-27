@@ -25,6 +25,7 @@ export default class Note extends React.Component {
                     {this.props.note.content}
                     </Card.Text>
                     <Button 
+                        onClick={this.props.handleEditForm}
                         variant="primary"
                         type="button">
                         Edit

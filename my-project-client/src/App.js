@@ -5,6 +5,7 @@ import Dashboard from './components/Dashboard'
 import { Switch, Route } from 'react-router-dom'
 import NewNote from './components/NewNote'
 
+
 class App extends React.Component {
   constructor() {
     super()

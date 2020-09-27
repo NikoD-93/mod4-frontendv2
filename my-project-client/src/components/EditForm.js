@@ -16,16 +16,14 @@ export default class EditForm extends React.Component {
         this.state = {
             updatedTitle: "",
             updatedContent: "",
-            show: false
         }
     }
 
     
 
 render() {
-
     return (
-        <div>
+        <Container>
             <Modal>
                 <Modal.Header closeButton>
                     Title
@@ -33,16 +31,18 @@ render() {
                 <Modal.Body>
                     <Form>
                         <Form.Group>
-                            <Form.Control name="updated_title"placeholder="{this.props.note.title}">
+                            <Form.Control 
+                                name="updated_title" 
+                                placeholder={this.props.note.title}
+                                onChange={(event) => {this.props.handleChange(event)}}>
                             </Form.Control>
                             <Form.Control name="updated_content"plceholder="{this.props.note.content}">
                             </Form.Control>
                         </Form.Group>
                     </Form>     
-                </Modal.Body>
-               
+                </Modal.Body>  
             </Modal>
-        </div>
+        </Container>
 
 
 
@@ -50,9 +50,5 @@ render() {
 
     )
 }
-
-
-
-
 
 }
