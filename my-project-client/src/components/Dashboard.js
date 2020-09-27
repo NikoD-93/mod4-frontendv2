@@ -20,7 +20,8 @@ export default class Dashboard extends React.Component {
     super() 
       this.state = {
         display: false,
-        currentNote: null 
+        currentNote: null,
+        showEdit: false
       }
     
   }
@@ -69,6 +70,7 @@ renderUserNotes = () => {
     }
 }
 
+
 handleLogout = () => {
     this.props.resetUserObj()
     return this.props.history.push("/login")
@@ -76,6 +78,15 @@ handleLogout = () => {
 
   newNote = () => {
     return this.props.history.push("/note/new")
+  }
+
+renderEditForm = () => {
+  console.log(this.state.showEdit)
+  return this.setState({
+    ...this.state,
+    showEdit: !this.state.showEdit
+  })
+    // return <EditForm note={this.state.currentNote}> </EditForm>
   }
   
 
@@ -97,8 +108,13 @@ render() {
         <Col md={4}> {this.renderUserNotes()}  </Col>
         {this.state.currentNote ?
         <Col  style={{padding: 0}}>
+          
+              <EditForm className={this.state.showEdit ? "visible":"hidden"} note={this.state.currentNote}></EditForm>
           <Container style={{padding: 0}} md={8} className="w-100">
-              <Note note={this.state.currentNote}></Note>
+              <Note 
+                note={this.state.currentNote}
+                handleEditForm={this.renderEditForm}>
+              </Note>
           </Container>
         </Col> 
         :
