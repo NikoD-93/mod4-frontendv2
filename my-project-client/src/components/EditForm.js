@@ -19,12 +19,20 @@ export default class EditForm extends React.Component {
         }
     }
 
-    
+
+    handleClose = () => {
+
+    }
 
 render() {
     return (
         <Container>
-            <Modal>
+            <Modal
+            show={this.props.show}
+            onHide={this.props.showEdit}
+            backdrop="static"
+            keyboard={false}
+            >
                 <Modal.Header closeButton>
                     Title
                 </Modal.Header>
