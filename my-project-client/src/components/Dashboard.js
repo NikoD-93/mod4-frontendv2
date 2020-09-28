@@ -109,7 +109,13 @@ render() {
         {this.state.currentNote ?
         <Col  style={{padding: 0}}>
           
-              <EditForm className={this.state.showEdit ? "visible":"hidden"} note={this.state.currentNote}></EditForm>
+              <EditForm 
+              // className={this.state.showEdit ? "visible":"hidden"} 
+              showEdit={this.renderEditForm}
+              note={this.state.currentNote}
+              show={this.state.showEdit}
+              >
+              </EditForm>
           <Container style={{padding: 0}} md={8} className="w-100">
               <Note 
                 note={this.state.currentNote}
