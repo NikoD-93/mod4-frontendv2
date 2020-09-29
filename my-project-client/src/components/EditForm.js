@@ -14,13 +14,18 @@ export default class EditForm extends React.Component {
     constructor() {
         super()
         this.state = {
-            updatedTitle: "",
-            updatedContent: "",
+            updated_title: "",
+            updated_content: "",
         }
     }
 
 
-    handleClose = () => {
+    handleChange = (event) => {
+        console.log(this.state)
+        const value = event.target.value
+        this.setState({
+            [event.target.name]: value 
+        })
 
     }
 
@@ -42,13 +47,25 @@ render() {
                             <Form.Control 
                                 name="updated_title" 
                                 placeholder={this.props.note.title}
-                                onChange={(event) => {this.props.handleChange(event)}}>
+                                onChange={(event) => {this.handleChange(event)}}>
                             </Form.Control>
-                            <Form.Control name="updated_content"plceholder="{this.props.note.content}">
+                            <Form.Control 
+                                onChange={(event) => {this.handleChange(event)}}
+                                name="updated_content"
+                                placeholder={this.props.note.content}
+                                as="textarea">
                             </Form.Control>
                         </Form.Group>
                     </Form>     
                 </Modal.Body>  
+                <Modal.Footer>
+                    <Button 
+                        variant="primary"
+                        type="submit"
+                    >
+                        Save changes
+                    </Button>
+                </Modal.Footer>
             </Modal>
         </Container>
 
