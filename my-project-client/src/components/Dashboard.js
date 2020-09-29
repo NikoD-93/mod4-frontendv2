@@ -109,8 +109,7 @@ render() {
         {this.state.currentNote ?
         <Col  style={{padding: 0}}>
           
-              <EditForm 
-              // className={this.state.showEdit ? "visible":"hidden"} 
+              <EditForm  
               showEdit={this.renderEditForm}
               note={this.state.currentNote}
               show={this.state.showEdit}
