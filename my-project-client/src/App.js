@@ -44,6 +44,35 @@ resetUserObj = () => {
   })
 }
 
+handleEditSubmit = (event, updatedTitle, updatedContent, noteId) => {
+  event.preventDefault()
+  const patchObj = {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify(
+      {
+      title: updatedTitle,
+      content: updatedContent,
+      user_id: this.state.userObj.id
+      }
+    )
+  }
+  fetch(`http://localhost:3000/notes/${noteId}`, patchObj)
+    .then(resp => resp.json())
+    .then(editedNoteData => {
+      console.log(editedNoteData)
+      let notes = this.state.notes
+      notes.push(editedNoteData)
+      this.setState({
+        notes: notes
+      })
+    })
+
+}
+
 handleNewNote = (event, title, content) => {
   event.preventDefault()
   const postObj = {
@@ -81,13 +110,24 @@ handleNewNote = (event, title, content) => {
     <div className="App">
        <Switch>
       <Route path='/dashboard' render={ (routeParams) => {
-        return <Dashboard {...routeParams} resetUserObj={this.resetUserObj} user={this.state.userObj} notes={this.state.notes} handleLogout={this.handleLogout} />
+        return <Dashboard {...routeParams} 
+                  resetUserObj={this.resetUserObj} 
+                  user={this.state.userObj} 
+                  notes={this.state.notes} 
+                  handleLogout={this.handleLogout} 
+                  handleEditSubmit={this.handleEditSubmit}
+                  />
       }} />
       <Route path='/login' render={ (routeParams) => {
-  return <Login {...routeParams} updateUser={this.updateUser} handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
+        return <Login {...routeParams} 
+                updateUser={this.updateUser} 
+                handleChange={this.handleChange} 
+                handleSubmit={this.handleSubmit} />
         }} />
-         <Route path='/note/new' render={ (routeParams) => {
-  return <NewNote {...routeParams} user={this.state.userObj} handleNewNote={this.handleNewNote} />
+      <Route path='/note/new' render={ (routeParams) => {
+        return <NewNote {...routeParams} 
+                  user={this.state.userObj} 
+                  handleNewNote={this.handleNewNote} />
         }} />
     </Switch>
     </div>

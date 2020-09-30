@@ -110,6 +110,7 @@ render() {
         <Col  style={{padding: 0}}>
           
               <EditForm  
+              handleEditSubmit={this.props.handleEditSubmit}
               showEdit={this.renderEditForm}
               note={this.state.currentNote}
               show={this.state.showEdit}
