@@ -29,6 +29,11 @@ export default class EditForm extends React.Component {
 
     }
 
+    completeEdit = (event) => {
+        this.props.handleEditSubmit(event, this.state.updated_title, this.state.updated_content, this.props.note.id)
+        this.props.showEdit()
+    }
+
 render() {
     return (
         <Container>
@@ -42,7 +47,9 @@ render() {
                     Title
                 </Modal.Header>
                 <Modal.Body>
-                    <Form>
+                    <Form
+                        onSubmit={(event) => this.completeEdit(event)}
+                    >
                         <Form.Group>
                             <Form.Control 
                                 name="updated_title" 
@@ -56,16 +63,14 @@ render() {
                                 as="textarea">
                             </Form.Control>
                         </Form.Group>
-                    </Form>     
-                </Modal.Body>  
-                <Modal.Footer>
-                    <Button 
+                        <Button 
                         variant="primary"
                         type="submit"
                     >
                         Save changes
                     </Button>
-                </Modal.Footer>
+                    </Form>     
+                </Modal.Body>  
             </Modal>
         </Container>
 
