@@ -64,13 +64,24 @@ handleEditSubmit = (event, updatedTitle, updatedContent, noteId) => {
     .then(resp => resp.json())
     .then(editedNoteData => {
       console.log(editedNoteData)
-      let notes = this.state.notes
-      notes.push(editedNoteData)
-      this.setState({
-        notes: notes
-      })
+      this.fetchUserNotes()
     })
 
+}
+
+fetchUserNotes = () => {
+  fetch(`http://localhost:3000/notes`)
+  .then(resp => resp.json())
+  .then(allNotes => { let userNotes = allNotes.filter(note => {
+    return this.state.userObj.id === note.user.id
+        }
+      )
+      this.setState({
+        ...this.state,
+        notes: userNotes
+      })
+    }
+  ) 
 }
 
 handleNewNote = (event, title, content) => {
